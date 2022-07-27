@@ -33,15 +33,16 @@ if __name__ == "__main__":
             while True:
                 input_query = S2T.speech_to_text()
 
-                if 'shutdown' or 'shut down' in input_query.lower():
+                if 'shutdown' in input_query.lower() or 'shut down' in input_query.lower():
                     T2S.speak('Thank you. Cheers')
                     exit()
-                elif 'name' in input_query.lower():
-                    T2S.speak("I'm roxy your personal assistant")
 
                 ## conversation
                 else:
-                    chat = nlp(transformers.Conversation(input_query), pad_token_id=50256)
-                    res = str(chat)
-                    res = res[res.find("bot >> ")+6:].strip()
-                    T2S.speak(res)
+                    if 'name' in input_query.lower():
+                        T2S.speak("I'm roxy your personal assistant")
+                    else:
+                        chat = nlp(transformers.Conversation(input_query), pad_token_id=50256)
+                        res = str(chat)
+                        res = res[res.find("bot >> ")+6:].strip()
+                        T2S.speak(res)
