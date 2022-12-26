@@ -16,7 +16,7 @@ class Text2Speech():
             self.gTTS_engine()
 
     def pyttsx3_engine(self):
-        print("AI --> ", self.text)
+        print("Roxy --> ", self.text)
         engine = pyttsx3.init()
         voices = engine.getProperty('voices')
         engine.setProperty('voice', voices[1].id)
